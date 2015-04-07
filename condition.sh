@@ -8,7 +8,15 @@ neutral='\e[0;m'
 
 clear
 echo -e "< login >${blue}"
-read -p 'pseudo:' -n 25 pseudo		# don't autorise more than 25 characters inputs
+
+if [[ $1 == '-l' ]]
+then
+	shift
+	pseudo=$1			# take the parameter right after the -p launch option
+else
+	read -p 'pseudo:' -n 25 pseudo		# don't autorise more than 25 characters inputs
+fi
+
 read -p '  pass:' -n 25 -s pass
 time=`date | cut -d , -f 2 | cut -d\  -f 2`
 date=`date | cut -d , -f 1`
@@ -24,3 +32,6 @@ else
 	echo -e "${red}\n> access denied.${neutral}"
 fi
 # a condition always begins with if and ends with fi
+
+# script call options : -l [pseudo] complete the input line of the pseudo without asking
+#					  :

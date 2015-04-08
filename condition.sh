@@ -7,8 +7,7 @@ yellow='\e[0;31m'
 neutral='\e[0;m'
 
 clear
-echo -e "< login >${blue}"
-
+echo -e "[login]${blue}"
 if [[ $1 == '-l' ]]
 then
 	shift
@@ -16,7 +15,6 @@ then
 else
 	read -p 'pseudo:' -n 25 pseudo		# don't autorise more than 25 characters inputs
 fi
-
 read -p '  pass:' -n 25 -s pass
 time=`date | cut -d , -f 2 | cut -d\  -f 2`
 date=`date | cut -d , -f 1`
